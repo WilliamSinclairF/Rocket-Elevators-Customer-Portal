@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Business_Logic;
 
 namespace Customer_Portal.Areas.Identity.Pages.Account
 {
@@ -81,9 +82,9 @@ namespace Customer_Portal.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
-                var urlEncodedEmail = HttpUtility.UrlEncode(Input.Email);
-                HttpResponseMessage response = await client.GetAsync($"{userApiURI}{urlEncodedEmail}");
-                if (response.IsSuccessStatusCode)
+                var canUserRegister = await Validators.CheckIfCustomerCanRegister(Input.Email);
+
+                if (canUserRegister)
                 {
 
                     var result = await _userManager.CreateAsync(user, Input.Password);
@@ -116,6 +117,11 @@ namespace Customer_Portal.Areas.Identity.Pages.Account
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Only Rocket Elevators customers can register on the portal.");
+
                 }
             }
             // If we got this far, something failed, redisplay form

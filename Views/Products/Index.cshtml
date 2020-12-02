@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <h1 class="text-center">My Buildings</h1>
+
+    <div class="container">
+        <div class="d-flex justify-content-center" id="buildings"></div>
+        <div class="d-flex justify-content-center" id="batteries"></div>
+    </div>
+
+    <script>const userEmail = "@User.Identity.Name"</script>
+    <script src="~/js/Products.js"></script>
+}
+
+
