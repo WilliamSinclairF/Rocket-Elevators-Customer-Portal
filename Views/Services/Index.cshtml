@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <h1 class="text-center">New Intervention Request</h1>
+
+    <form>
+        <div class="pb-2" id="buildingsContainer gr"></div>
+        <div class="pb-2" id="batteriesContainer"></div>
+        <div class="pb-2" id="columnsContainer"></div>
+        <div class="pb-2" id="elevatorsContainer"></div>
+    </form>
+
+    <script>const userEmail = "@User.Identity.Name"</script>
+    <script src="~/js/Services/Constants.js"></script>
+    <script src="~/js/Services/Products.js"></script>
+}
+
+
