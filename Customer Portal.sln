@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customer Portal", "Customer Portal.csproj", "{C9239067-815C-4FAE-B05E-FDE2C48D2BFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business Logic", "..\Business Logic\Business Logic.csproj", "{7B66A694-9FE2-4C98-BBBA-B0E8CF0A2440}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{C9239067-815C-4FAE-B05E-FDE2C48D2BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9239067-815C-4FAE-B05E-FDE2C48D2BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9239067-815C-4FAE-B05E-FDE2C48D2BFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B66A694-9FE2-4C98-BBBA-B0E8CF0A2440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B66A694-9FE2-4C98-BBBA-B0E8CF0A2440}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B66A694-9FE2-4C98-BBBA-B0E8CF0A2440}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B66A694-9FE2-4C98-BBBA-B0E8CF0A2440}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

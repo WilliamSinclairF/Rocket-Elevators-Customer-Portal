@@ -26,8 +26,6 @@ namespace Customer_Portal.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly string userApiURI = "https://localhost:44370/api/users/email/";
-
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
