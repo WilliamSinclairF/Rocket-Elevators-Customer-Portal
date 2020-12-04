@@ -5,9 +5,13 @@
 		<UserSecretsId>aspnet-Customer_Portal-B856EA72-B69D-4734-A0ED-AA3D4DF1EDD8</UserSecretsId>
 		<RootNamespace>Customer_Portal</RootNamespace>
 		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>.</DockerfileContext>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.0.0" />
+		<PackageReference Include="Azure.Identity" Version="1.2.2" />
 		<PackageReference Include="GraphQL.Client" Version="3.2.0" />
 		<PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="3.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.8" />
@@ -19,6 +23,8 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.8" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="3.1.10" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
 	</ItemGroup>

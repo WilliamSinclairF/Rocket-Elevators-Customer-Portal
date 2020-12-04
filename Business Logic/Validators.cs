@@ -9,7 +9,7 @@ namespace Business_Logic
     {
         static readonly HttpClient client = new HttpClient();
 
-        private static readonly string userApiURI = "https://localhost:44370/api/users/email/";
+        private static readonly string userApiURI = "https://bobby-joe.azurewebsites.net/api/users/email/";
 
         public static async Task<bool> CheckIfCustomerCanRegister(string email)
         {

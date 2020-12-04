@@ -1,12 +1,9 @@
 {
   "dependencies": {
-    "secrets1": {
-      "type": "secrets.user"
-    },
     "mssql1": {
       "type": "mssql.onprem",
       "connectionId": "db",
-      "secretStore": "LocalSecretsFile"
+      "secretStore": "AzureAppSettings"
     }
   }
 }
