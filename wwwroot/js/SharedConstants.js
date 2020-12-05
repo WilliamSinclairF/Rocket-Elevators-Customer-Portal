@@ -1,0 +1,1 @@
+﻿const graphQlApi = `https://bobby-joe-part-two.herokuapp.com/graphql`

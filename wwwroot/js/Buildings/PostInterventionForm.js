@@ -3,9 +3,9 @@
 let BatteryId = null
 let ColumnId = null
 let ElevatorId = null
-const confirmationMessage = document.getElementById('confirmationMessage')
+const interventionMessage = document.getElementById('interventionMessage')
 
-async function postForm() {
+async function postInterventionForm() {
     data = {
         CustomerEmail: userEmail,
         BuildingId: parseInt(document.getElementById('buildingIdInput').value),
@@ -23,23 +23,23 @@ async function postForm() {
             },
             body: JSON.stringify(data)
         })
-        confirmationMessage.textContent = "Loading... Please wait"
+        interventionMessage.textContent = "Loading... Please wait"
         if (response.ok) {
-            confirmationMessage.textContent = "Your intervention request has been submitted successfully. A Rocket Elevators representative will be contacting you shortly."
+            interventionMessage.textContent = "Your intervention request has been submitted successfully. A Rocket Elevators representative will be contacting you shortly."
             return response.json()
         }
         else {
-            confirmationMessage.textContent = "An error occured. Please refresh the page and try again.\nIf the issue persists, please contact us at (418) 580-7055"
+            interventionMessage.textContent = "An error occured. Please refresh the page and try again.\nIf the issue persists, please contact us at (418) 580-7055"
         }
     }
     catch (err) {
         throw new Error("An error occured. Please refresh the page and try again.\nIf the issue persists, please contact us at (418) 580-7055")
-        confirmationMessage.textContent = "An error occured. Please refresh the page and try again.\nIf the issue persists, please contact us at (418) 580-7055"
+        interventionMessage.textContent = "An error occured. Please refresh the page and try again.\nIf the issue persists, please contact us at (418) 580-7055"
     }
 }
 
 document.getElementById('submit').addEventListener('click', () => {
-    postForm()
+    postInterventionForm()
     interventionForm.reset()
     buildingSelectionIndicator.textContent = 'None'
     batterySelectionIndicator.textContent = 'None'

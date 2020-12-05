@@ -9,21 +9,16 @@ using System.Threading.Tasks;
 
 namespace Customer_Portal.Controllers
 {
-    public class ServicesController : Controller
+    public class BuildingsController : Controller
     {
-        private readonly ILogger<ServicesController> _logger;
+        private readonly ILogger<BuildingsController> _logger;
 
-        public ServicesController(ILogger<ServicesController> logger)
+        public BuildingsController(ILogger<BuildingsController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult MyServices()
+        public IActionResult MyBuildings()
         {
             return View();
         }

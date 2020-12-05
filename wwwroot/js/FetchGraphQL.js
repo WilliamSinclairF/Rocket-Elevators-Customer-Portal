@@ -1,5 +1,9 @@
 ﻿//see Constants.js for URLs
-const fetchGraphQl = async () => {
+const fetchGraphQl = async (queryString) => {
+    let query = JSON.stringify({
+        query: queryString
+    })
+    console.log(query)
     const response = await fetch(graphQlApi, {
         method: 'POST',
         headers: {
@@ -7,7 +11,7 @@ const fetchGraphQl = async () => {
             'Accept': 'application/json',
         },
         body: JSON.stringify({
-            query: servicesQuery
+            query: queryString
         })
     })
     return response.json()

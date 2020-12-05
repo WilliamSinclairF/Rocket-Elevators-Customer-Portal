@@ -55,3 +55,11 @@
     display: none !important;
 }
 
+
+.buildingInfoCard{
+    
+}
+
+.selected{
+    border: 2px solid blue !important;
+}

@@ -1,0 +1,127 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <h1 class="text-center m-3">My Services</h1>
+    <div class="text-center font-weight-light m-2">
+        <h4><i class="fas fa-info-circle"></i> Need a technician?</h4>
+        <span>If one of your Rocket Elevators services is in need of an intervention, use this page to request an intervention at its associated building. To do so, select the building followed by the relevant battery, column or elevator using the radio buttons.</span><br />
+        <span>You can also simply use this page to browse your active services and check on the status of your equipment.</span>
+    </div>
+    <div class="text-center col-12" id="loading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <form class="mb-5 hidden" id="interventionForm">
+        <div class="pb-2 gridContainer" id="buildingsContainer"></div>
+        <div class="col-12 d-flex justify-content-center m-4">
+            <button id="updateBuildingButton" class="btn btn-primary hidden" type="button" data-toggle="modal" data-target="#updateBuildingModal">Update Building Information</button>
+        </div>
+        <div class="pb-2" id="batteriesContainer"></div>
+
+        <div class="pb-2" id="columnsContainer"></div>
+
+        <div class="pb-5" id="elevatorsContainer"></div>
+
+        <div id="floatingMenu" class="alert alert-primary floating-menu mt-5 d-flex justify-content-center hidden">
+            <table class="table-sm col-6  text-center">
+                <tr>
+                    <th>Building</th>
+                    <th>Battery ID</th>
+                    <th>Column ID</th>
+                    <th>Elevator ID</th>
+                </tr>
+                <tr>
+                    <td id="buildingSelectionIndicator">None</td>
+                    <td id="batterySelectionIndicator">None</td>
+                    <td id="columnSelectionIndicator">None</td>
+                    <td id="elevatorSelectionIndicator">None</td>
+                </tr>
+            </table>
+            <div class="col-6 text-center">
+                <h6>Issue Description</h6>
+                <textarea class="w-100" name="Report" id="reportInput"></textarea>
+                <input class="btn btn-primary" type="button" id="submit" value="Submit New Intervention Request" data-toggle="modal" data-target="#confirmationModal">
+                <button class="btn btn-danger" id="cancelInterventionForm">Cancel</button>
+            </div>
+
+        </div>
+        <input type="text" name="BuildingId" id="buildingIdInput" value="" hidden />
+    </form>
+
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModallabel">Intervention Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="interventionMessage">
+                        <div class="text-center col-12" id="loading">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="updateBuildingModal" tabindex="-1" role="dialog" aria-labelledby="updateBuildingModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateBuildingModal">Update Building</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 id="addressUpdateMessage" style="color: dodgerblue;"></h3>
+                    <form id="addressUpdateForm">
+                        <div class="form-group">
+                            <label for="NumberAndStreet">Number and street</label>
+                            <input type="text" class="form-control" id="NumberAndStreet" name="NumberAndStreet" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="City">City</label>
+                            <input type="text" class="form-control" id="City" name="City" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="State">State/Province</label>
+                            <input type="text" class="form-control" id="State" name="State" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="PostalCode">ZIP/Postal Code</label>
+                            <input type="text" class="form-control" id="PostalCode" name="PostalCode" placeholder="" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveBuildingUpdate" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>const userEmail = "@User.Identity.Name"</script>
+    <script src="~/js/SharedConstants.js"></script>
+    <script src="~/js/Buildings/BuildingsConstants.js"></script>
+    <script src="~/js/FetchGraphQL.js"></script>
+    <script src="~/js/Buildings/PostInterventionForm.js"></script>
+    <script src="~/js/Buildings/PutAddressUpdateForm.js"></script>
+    <script src="~/js/Buildings/ShowBuildings.js"></script>
+}

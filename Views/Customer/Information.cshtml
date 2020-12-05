@@ -1,0 +1,136 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <h1 class="text-center m-3">My Customer Information</h1>
+    <div class="text-center col-12" id="loading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="row hidden" id="customerInfo">
+        <div class="col-sm">
+            <h3>Personal Information <input class="btn btn-sm btn-outline-secondary" type="button" id="editPersonalInfoButton" value="Edit" data-toggle="modal" data-target="#editPersonalInfoModal"></h3>
+
+            <table class="table table-bordered">
+                <tr><th>Title: </th><td><span id="title"></span></td></tr>
+                <tr><th>First name: </th><td><span id="firstName"></span></td></tr>
+                <tr><th>Last name: </th><td><span id="lastName"></span></td></tr>
+            </table>
+        </div>
+
+        <div class="col-lg">
+            <h3>Company Information <input class="btn btn-sm btn-outline-secondary" type="button" id="editCompanyInfoButton" value="Edit" data-toggle="modal" data-target="#editCompanyInfoModal"></h3>
+            <table class="table table-bordered">
+                <tr><th>Company name: </th><td><span id="companyName"></span></td></tr>
+                <tr><th>Company description: </th><td><span id="companyDescription"></span></td></tr>
+                <tr><th>Company contact name: </th><td><span id="companyContactFullName"></span></td></tr>
+                <tr><th>Contact phone number: </th><td><span id="companyContactPhone"></span></td></tr>
+                <tr><th>Contact email: </th><td><span id="companyContactEmail"></span></td></tr>
+                <tr><th>Technical authority name: </th><td><span id="technicalAuthorityFullName"></span></td></tr>
+                <tr><th>Technical authority phone number: </th><td><span id="technicalAuthorityPhoneNumber"></span></td></tr>
+                <tr><th>Technical authority email: </th><td><span id="technicalManagerEmailService"></span></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editPersonalInfoModal" tabindex="-1" role="dialog" aria-labelledby="editPersonalInfoModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPersonalInfoModalLabel">Edit Personal Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="editPersonalInfoMessage"></span>
+                    <div class="form-group">
+                        <label for="titleInput">Title</label>
+                        <input type="text" class="form-control" id="titleInput" name="titleInput" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="firstNameInput">First name</label>
+                        <input type="text" class="form-control" id="firstNameInput" name="firstNameInput" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastNameInput">Last name</label>
+                        <input type="text" class="form-control" id="lastNameInput" name="lastNameInput" placeholder="" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="savePersonalInfoButton" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editCompanyInfoModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModallabel">Edit Company Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="editCompanyInfoMessage"></span>
+                    <form id="editCompanyInfoForm">
+                        <div class="form-group">
+                            <label for="companyNameInput">Company name</label>
+                            <input type="text" class="form-control" id="companyNameInput" name="companyNameInput" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="companyContactFullNameInput">Company contact name</label>
+                            <input type="text" class="form-control" id="companyContactFullNameInput" name="companyContactFullNameInput" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="companyContactPhoneInput">Contact phone number</label>
+                            <input type="text" class="form-control" id="companyContactPhoneInput" name="companyContactPhoneInput" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="companyContactEmailInput">Contact email</label>
+                            <input type="text" class="form-control" id="companyContactEmailInput" name="companyContactEmailInput" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="companyDescriptionInput">Company description</label>
+                            <input type="text" class="form-control" id="companyDescriptionInput" name="companyDescriptionInput" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="technicalAuthorityFullNameInput">Technical authority name</label>
+                            <input type="text" class="form-control" id="technicalAuthorityFullNameInput" name="technicalAuthorityFullNameInput" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="technicalAuthorityPhoneNumberInput">Technical authority phone number</label>
+                            <input type="text" class="form-control" id="technicalAuthorityPhoneNumberInput" name="technicalAuthorityPhoneNumberInput" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="technicalManagerEmailServiceInput">Technical authority email</label>
+                            <input type="text" class="form-control" id="technicalManagerEmailServiceInput" name="technicalManagerEmailServiceInput" placeholder="" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveCompanyInfoButton"class="btn btn-primary" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>const userEmail = "@User.Identity.Name"; const userId = "@UserManager.GetUserId(User)"</script>
+    <script src="~/js/SharedConstants.js"></script>
+    <script src="~/js/Customer/CustomerInfoConstants.js"></script>
+    <script src="~/js/FetchGraphQL.js"></script>
+    <script src="~/js/Customer/ShowCustomerInfo.js"></script>
+    <script src="~/js/Customer/UpdateForms.js"></script>
+
+
+}
