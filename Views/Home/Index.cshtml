@@ -1,8 +1,30 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Rocket Elevators Customer Portal</h1>
+
+    <p>Use the links in the navigation bar to visit the different parts of the website.</p>
+
+    <p>The portal allows you to view and manage your building and personal information. You can also use it to create intervention requests.</p>
+
+    <a href="https://rocketelevators.tech/">Go back to RocketElevators.tech</a>
 </div>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <script SameSite="None; Secure" src="https://static.landbot.io/landbot-3/landbot-3.0.0.js"></script>
+    <script>
+        var myLandbot = new Landbot.Livechat({
+            configUrl: 'https://chats.landbot.io/v3/H-771641-IW1C02GKZ7HU3O88/index.json',
+        });
+    </script>
+}

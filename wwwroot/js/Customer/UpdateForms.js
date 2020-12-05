@@ -35,7 +35,7 @@ document.getElementById('savePersonalInfoButton').addEventListener('click', asyn
     document.getElementById('loading').classList.remove('hidden')
     await putForm(updatedUserData, `${updateUserApi}${encodeURIComponent(userEmail)}`)
     document.getElementById('loading').classList.add('hidden')
-    window.location.reload(false)
+    window.location.reload(false);
 })
 
 document.getElementById('saveCompanyInfoButton').addEventListener('click', async (e) => {
@@ -53,5 +53,5 @@ document.getElementById('saveCompanyInfoButton').addEventListener('click', async
     document.getElementById('loading').classList.remove('hidden')
     await putForm(updatedCompanyData, `${updateCustomerApi}${encodeURIComponent(userEmail)}`)
     document.getElementById('loading').classList.add('hidden')
-    window.location.reload(false)
+    window.location.reload(false);
 })
