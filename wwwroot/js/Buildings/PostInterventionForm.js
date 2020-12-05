@@ -1,18 +1,22 @@
 ﻿//see Constants.js for URLs
+const interventionMessage = document.getElementById('interventionMessage')
 
 let BatteryId = null
 let ColumnId = null
 let ElevatorId = null
-const interventionMessage = document.getElementById('interventionMessage')
+let reportInput = document.getElementById('reportInput')
 
 async function postInterventionForm() {
+    if (reportInput === '') {
+        interventionMessage.textContent = "Please provide a description of the issue in the report field"
+    }
     data = {
         CustomerEmail: userEmail,
         BuildingId: parseInt(document.getElementById('buildingIdInput').value),
         BatteryId: BatteryId,
         ColumnId: ColumnId,
         ElevatorId: ElevatorId,
-        Report: document.getElementById('reportInput').value || null
+        Report: document.getElementById('reportInput').value
     }
     try {
         const response = await fetch(createInterventionApi, {
@@ -38,8 +42,8 @@ async function postInterventionForm() {
     }
 }
 
-document.getElementById('submit').addEventListener('click', () => {
-    postInterventionForm()
+document.getElementById('submit').addEventListener('click', async () => {
+    await postInterventionForm()
     interventionForm.reset()
     buildingSelectionIndicator.textContent = 'None'
     batterySelectionIndicator.textContent = 'None'
