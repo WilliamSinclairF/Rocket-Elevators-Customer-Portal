@@ -1,10 +1,10 @@
 ﻿// API URLs and other strings used by the building page
-const buildingApi = `https://bobby-joe-part-one.azurewebsites.net/api/buildings/find_by_email/`
-const batteryApi = `https://bobby-joe-part-one.azurewebsites.net/api/batteries/building_id/`
-const columnApi = `https://bobby-joe-part-one.azurewebsites.net/api/columns/battery_id/`
-const elevatorApi = `https://bobby-joe-part-one.azurewebsites.net/api/elevators/column_id/`
-const createInterventionApi = `https://bobby-joe-part-one.azurewebsites.net/api/interventions/portal_intervention`
-const updateBuildingAddressApi = `https://bobby-joe-part-one.azurewebsites.net/api/buildings/address/`
+const buildingApi = `https://bobby-joe-is-back-with-an-appetite-for-revenge.azurewebsites.net/api/buildings/find_by_email/`
+const batteryApi = `https://bobby-joe-is-back-with-an-appetite-for-revenge.azurewebsites.net/api/batteries/building_id/`
+const columnApi = `https://bobby-joe-is-back-with-an-appetite-for-revenge.azurewebsites.net/api/columns/battery_id/`
+const elevatorApi = `https://bobby-joe-is-back-with-an-appetite-for-revenge.azurewebsites.net/api/elevators/column_id/`
+const createInterventionApi = `https://bobby-joe-is-back-with-an-appetite-for-revenge.azurewebsites.net/api/interventions/portal_intervention`
+const updateBuildingAddressApi = `https://bobby-joe-is-back-with-an-appetite-for-revenge.azurewebsites.net/api/buildings/address/`
 const mapsKey = `AIzaSyC9uJotp0jfTtkorLtdhUQfU97Ti3H_oJQ`
 const urlEncodedEmail = encodeURIComponent(userEmail)
 const servicesQuery = `{
